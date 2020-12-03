@@ -1,4 +1,4 @@
-package com.rwawrzyniak.discofetch
+package com.rwawrzyniak.discofetch.framework.presentation
 
 import android.app.Application
 
