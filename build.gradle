@@ -60,6 +60,7 @@ dependencies {
 	// Hilt
 	implementation Dependencies.hiltAndroid
 	implementation Dependencies.hiltViewModel
+	implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 	kapt AnnotationProcessing.hiltAndroidCompiler
 	kapt AnnotationProcessing.hiltCompiler
 
@@ -68,11 +69,20 @@ dependencies {
 	implementation Dependencies.kotlin_reflect
 	implementation Dependencies.ktx
 
-    // Support
+
+	// Support
 	implementation SupportDependencies.appcompat
 	implementation SupportDependencies.constraintlayout
 	implementation SupportDependencies.material_design
 	implementation SupportDependencies.swipe_refresh_layout
+	implementation Dependencies.navigation_runtime
+	implementation Dependencies.navigation_ui
+	implementation Dependencies.navigation_fragment
+
+	// Retrofit
+	implementation Dependencies.retrofit
+	implementation Dependencies.retrofit_gson
+	implementation Dependencies.httpLoggingInterceptor
 
 	// Test dependencies
 	testImplementation TestDependencies.hiltAndroidTesting
