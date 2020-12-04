@@ -5,11 +5,9 @@ import dependencies.AnnotationProcessing
 import dependencies.Java
 
 apply plugin: 'com.android.application'
-
+apply plugin: 'dagger.hilt.android.plugin'
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-android-extensions'
-
 apply plugin: 'kotlin-kapt'
 
 android {
@@ -59,6 +57,12 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
+	// Hilt
+	implementation Dependencies.hiltAndroid
+	implementation Dependencies.hiltViewModel
+	kapt AnnotationProcessing.hiltAndroidCompiler
+	kapt AnnotationProcessing.hiltCompiler
+
     // Kotlin
 	implementation Dependencies.kotlin_standard_library
 	implementation Dependencies.kotlin_reflect
@@ -69,4 +73,8 @@ dependencies {
 	implementation SupportDependencies.constraintlayout
 	implementation SupportDependencies.material_design
 	implementation SupportDependencies.swipe_refresh_layout
+
+	// Test dependencies
+	testImplementation TestDependencies.hiltAndroidTesting
+
 }
