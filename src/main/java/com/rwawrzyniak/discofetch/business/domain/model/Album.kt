@@ -5,7 +5,7 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class Album(
-	val id: Int,
+	val id: Long,
 	val cover_image: String,
 	val title: String
 ) : Parcelable

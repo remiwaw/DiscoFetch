@@ -7,7 +7,7 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class SearchResponse(
 	val pagination: Pagination,
-	val results: List<Result>
+	val searchResults: List<SearchResult>
 ) : Parcelable
 
 @Parcelize
@@ -20,7 +20,7 @@ data class Pagination(
 ) : Parcelable
 
 @Parcelize
-data class Result(
+data class SearchResult(
 	val barcode: List<String>,
 	val catno: String,
 	val community: Community,

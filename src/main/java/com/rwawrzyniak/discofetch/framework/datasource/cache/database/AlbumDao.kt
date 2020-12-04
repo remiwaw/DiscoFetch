@@ -13,4 +13,7 @@ interface AlbumDao {
 
 	@Query("SELECT * FROM albums WHERE title = :albumName ORDER BY title ASC")
 	fun getAlbums(albumName: String): PagingSource<Int, AlbumCacheEntity>
+
+	@Query("DELETE FROM albums")
+	fun deleteAlbumsItems(): Int
 }

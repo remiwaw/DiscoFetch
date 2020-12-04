@@ -12,9 +12,14 @@ interface DiscogsNetworkDataSource{
 
 	@GET("/database/search")
 	suspend fun searchByAlbum(@Query("release_title") albumName: String,
-							@Query("per_page") perPage: Long,
-							@Query("page") page: Long,
+							@Query("per_page") perPage: Int,
+							@Query("page") page: Int,
 							@Query("token") token: String = "PYRPLaTEXFXOhZHlrwluhzQYytAEiPyKPaWqkjmf"): SearchResponse
+
+	@GET("/database/search")
+	suspend fun loadAll(@Query("per_page") perPage: Int,
+						@Query("page") page: Int,
+						@Query("token") token: String = "PYRPLaTEXFXOhZHlrwluhzQYytAEiPyKPaWqkjmf"): SearchResponse
 
 //	@GET("albums/id")
 //	suspend fun getAlbum(id: String): List<Album>

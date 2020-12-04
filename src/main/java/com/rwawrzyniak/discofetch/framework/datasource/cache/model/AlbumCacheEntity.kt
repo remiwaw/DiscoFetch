@@ -9,7 +9,7 @@ data class AlbumCacheEntity(
 
 	@PrimaryKey(autoGenerate = false)
     @ColumnInfo(name = "id")
-    var id: String,
+    var id: Long,
 
     @ColumnInfo(name = "title")
     var title: String,

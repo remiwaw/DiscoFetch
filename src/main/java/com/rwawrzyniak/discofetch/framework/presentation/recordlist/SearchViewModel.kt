@@ -4,7 +4,7 @@ import androidx.hilt.Assisted
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
-import com.rwawrzyniak.discofetch.business.data.DiscogsSearchRepository
+import com.rwawrzyniak.discofetch.business.data.network.implementation.DiscogsSearchRepository
 import kotlinx.coroutines.runBlocking
 
 class SearchViewModel @ViewModelInject constructor(
