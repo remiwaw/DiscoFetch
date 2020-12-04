@@ -78,6 +78,10 @@ dependencies {
 	implementation Dependencies.navigation_runtime
 	implementation Dependencies.navigation_ui
 	implementation Dependencies.navigation_fragment
+	implementation Dependencies.room_runtime
+	implementation Dependencies.room_ktx
+	kapt AnnotationProcessing.room_compiler
+	implementation Dependencies.paging
 
 	// Retrofit
 	implementation Dependencies.retrofit
