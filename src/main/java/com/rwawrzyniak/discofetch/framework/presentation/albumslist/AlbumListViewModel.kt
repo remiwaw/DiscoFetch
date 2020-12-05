@@ -6,16 +6,16 @@ import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.map
 import androidx.paging.*
 import com.rwawrzyniak.discofetch.business.data.network.implementation.NetworkConstants.PAGE_SIZE
 import com.rwawrzyniak.discofetch.business.domain.model.Album
-import com.rwawrzyniak.discofetch.framework.datasource.AlbumRemoteMediator
+import com.rwawrzyniak.discofetch.framework.datasource.AlbumPagingSource
 import com.rwawrzyniak.discofetch.framework.datasource.cache.database.AlbumDao
 import com.rwawrzyniak.discofetch.framework.datasource.cache.mappers.CacheMapper
 
-class AlbumListViewModel @ViewModelInject constructor(
-	private val albumRemoteMediator: AlbumRemoteMediator,
+class AlbumListViewModel @ExperimentalPagingApi
+@ViewModelInject constructor(
+	private val albumPagingSource: AlbumPagingSource,
 	private val albumDao: AlbumDao,
 	private val mapper: CacheMapper,
 	@Assisted private val savedStateHandle: SavedStateHandle
@@ -50,9 +50,8 @@ class AlbumListViewModel @ViewModelInject constructor(
 
 		return Pager(
 			config = config,
-			remoteMediator = albumRemoteMediator,
-			pagingSourceFactory = { albumDao.getAll() }
-		).liveData.map { it.map { albumCacheEntity -> mapper.mapFromEntity(albumCacheEntity) } }
+			pagingSourceFactory = { albumPagingSource },
+		).liveData
 	}
 }
 

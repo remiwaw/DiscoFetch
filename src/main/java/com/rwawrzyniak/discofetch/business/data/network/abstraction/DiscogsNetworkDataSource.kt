@@ -11,7 +11,7 @@ interface DiscogsNetworkDataSource{
 	// https://api.discogs.com/database/search?release_title=nevermind&artist=nirvana&per_page=3&page=1&token=PYRPLaTEXFXOhZHlrwluhzQYytAEiPyKPaWqkjmf
 
 	@GET("/database/search")
-	suspend fun searchByAlbum(@Query("release_title") albumName: String,
+	suspend fun searchByAlbum(@Query("release_title") albumName: String = "",
 							@Query("per_page") perPage: Int,
 							@Query("page") page: Int,
 							@Query("token") token: String = "PYRPLaTEXFXOhZHlrwluhzQYytAEiPyKPaWqkjmf"): SearchResponse
