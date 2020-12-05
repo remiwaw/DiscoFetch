@@ -48,12 +48,10 @@ class AlbumListViewModel @ViewModelInject constructor(
 			enablePlaceholders = true
 		)
 
-		val pagingSourceFactory = { albumDao.getAll() }
-
 		return Pager(
 			config = config,
 			remoteMediator = albumRemoteMediator,
-			pagingSourceFactory = pagingSourceFactory
+			pagingSourceFactory = { albumDao.getAll() }
 		).liveData.map { it.map { albumCacheEntity -> mapper.mapFromEntity(albumCacheEntity) } }
 	}
 }
