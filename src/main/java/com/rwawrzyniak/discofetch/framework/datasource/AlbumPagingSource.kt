@@ -14,7 +14,8 @@ import javax.inject.Inject
 private const val DEFAULT_PAGE_INDEX = 1
 
 @ExperimentalPagingApi
-class AlbumPagingSource @Inject constructor(
+class AlbumPagingSource constructor(
+	private val query: String,
 	private val api: DiscogsNetworkDataSource,
 	private val networkMapper: NetworkMapper,
 	private val cacheMapper: CacheMapper,
@@ -26,7 +27,7 @@ class AlbumPagingSource @Inject constructor(
 		//for first case it will be null, then we can pass some default value, in our case it's 1
 		val page = params.key ?: DEFAULT_PAGE_INDEX
 		return try {
-			val apiResponse = api.loadAll(perPage = params.loadSize, page = page)
+			val apiResponse = api.searchByAlbum(albumName = query, perPage = params.loadSize, page = page)
 
 			val albumsEntity = apiResponse.results.map { networkMapper.mapFromEntity(it) }
 

@@ -83,7 +83,7 @@ dependencies {
 	kapt AnnotationProcessing.room_compiler
 	implementation Dependencies.paging
 	implementation Dependencies.coil
-	implementation Dependencies.rateLimiter
+	implementation Dependencies.corbind
 
 	// Retrofit
 	implementation Dependencies.retrofit
