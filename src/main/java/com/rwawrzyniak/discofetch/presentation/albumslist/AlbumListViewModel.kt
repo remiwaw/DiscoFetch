@@ -1,4 +1,4 @@
-package com.rwawrzyniak.discofetch.framework.presentation.albumslist
+package com.rwawrzyniak.discofetch.presentation.albumslist
 
 import androidx.hilt.Assisted
 import androidx.hilt.lifecycle.ViewModelInject

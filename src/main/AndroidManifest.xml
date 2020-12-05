@@ -5,7 +5,7 @@
 	<uses-permission android:name="android.permission.INTERNET" />
 
 	<application
-		android:name=".framework.presentation.BaseApplication"
+		android:name="com.rwawrzyniak.discofetch.presentation.BaseApplication"
 		android:allowBackup="true"
 		android:icon="@mipmap/ic_launcher"
 		android:label="@string/app_name"
@@ -13,7 +13,7 @@
 		android:supportsRtl="true"
 		android:theme="@style/AppTheme">
 		<activity
-			android:name=".framework.presentation.MainActivity"
+			android:name="com.rwawrzyniak.discofetch.presentation.MainActivity"
 			android:windowSoftInputMode="adjustPan">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />

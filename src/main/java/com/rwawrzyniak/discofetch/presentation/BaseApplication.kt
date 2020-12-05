@@ -1,4 +1,4 @@
-package com.rwawrzyniak.discofetch.framework.presentation
+package com.rwawrzyniak.discofetch.presentation
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp

@@ -2,12 +2,10 @@ package com.rwawrzyniak.discofetch.business.data.cache.abstraction
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.rwawrzyniak.discofetch.framework.datasource.cache.database.AlbumDao
-import com.rwawrzyniak.discofetch.framework.datasource.cache.model.AlbumCacheEntity
-import com.rwawrzyniak.discofetch.framework.datasource.cache.model.AlbumRemoteKeyEntity
+import com.rwawrzyniak.discofetch.business.domain.model.AlbumCacheEntity
 
 @Database(
-	entities = [AlbumCacheEntity::class, AlbumRemoteKeyEntity::class],
+	entities = [AlbumCacheEntity::class],
 	version = 1
 )
 abstract class CacheDb : RoomDatabase() {

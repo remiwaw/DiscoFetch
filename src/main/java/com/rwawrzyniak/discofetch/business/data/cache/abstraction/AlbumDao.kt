@@ -1,10 +1,11 @@
-package com.rwawrzyniak.discofetch.framework.datasource.cache.database
+package com.rwawrzyniak.discofetch.business.data.cache.abstraction
+
 import androidx.paging.PagingSource
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.rwawrzyniak.discofetch.framework.datasource.cache.model.AlbumCacheEntity
+import com.rwawrzyniak.discofetch.business.domain.model.AlbumCacheEntity
 
 @Dao
 interface AlbumDao {

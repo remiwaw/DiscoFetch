@@ -1,4 +1,4 @@
-package com.rwawrzyniak.discofetch.framework.presentation
+package com.rwawrzyniak.discofetch.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

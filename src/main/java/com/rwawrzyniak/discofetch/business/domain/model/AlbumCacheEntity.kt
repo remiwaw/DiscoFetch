@@ -1,4 +1,4 @@
-package com.rwawrzyniak.discofetch.framework.datasource.cache.model
+package com.rwawrzyniak.discofetch.business.domain.model
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
@@ -17,6 +17,3 @@ data class AlbumCacheEntity(
     @ColumnInfo(name = "cover_image")
 	val cover_image: String
 )
-
-
-

@@ -1,4 +1,4 @@
-package com.rwawrzyniak.discofetch.framework.presentation.albumslist
+package com.rwawrzyniak.discofetch.presentation.albumslist
 
 import android.os.Bundle
 import android.util.Log
@@ -12,10 +12,8 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.rwawrzyniak.discofetch.R
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_album_list.*
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import ru.ldralighieri.corbind.widget.textChanges
 
 @ExperimentalPagingApi

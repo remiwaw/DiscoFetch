@@ -1,8 +1,8 @@
-package com.rwawrzyniak.discofetch.framework.datasource.cache.mappers
+package com.rwawrzyniak.discofetch.business.data.cache.mappers
 
 import com.rwawrzyniak.discofetch.business.domain.model.Album
 import com.rwawrzyniak.discofetch.business.domain.util.EntityMapper
-import com.rwawrzyniak.discofetch.framework.datasource.cache.model.AlbumCacheEntity
+import com.rwawrzyniak.discofetch.business.domain.model.AlbumCacheEntity
 import javax.inject.Inject
 
 class CacheMapper @Inject constructor(): EntityMapper<AlbumCacheEntity, Album> {

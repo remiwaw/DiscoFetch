@@ -1,15 +1,13 @@
-package com.rwawrzyniak.discofetch.framework.datasource
+package com.rwawrzyniak.discofetch.business.data.network.implementation
 
 import androidx.paging.*
 import com.rwawrzyniak.discofetch.business.data.cache.abstraction.CacheDb
 import com.rwawrzyniak.discofetch.business.data.network.abstraction.DiscogsNetworkDataSource
 import com.rwawrzyniak.discofetch.business.domain.model.Album
-import com.rwawrzyniak.discofetch.framework.datasource.cache.mappers.CacheMapper
-import com.rwawrzyniak.discofetch.framework.datasource.cache.model.AlbumCacheEntity
-import com.rwawrzyniak.discofetch.framework.datasource.network.implementation.NetworkMapper
+import com.rwawrzyniak.discofetch.business.data.cache.mappers.CacheMapper
+import com.rwawrzyniak.discofetch.business.data.network.mappers.NetworkMapper
 import retrofit2.HttpException
 import java.io.IOException
-import javax.inject.Inject
 
 private const val DEFAULT_PAGE_INDEX = 1
 
