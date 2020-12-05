@@ -8,6 +8,7 @@ import com.rwawrzyniak.discofetch.business.data.cache.abstraction.CacheDb
 import com.rwawrzyniak.discofetch.business.data.cache.abstraction.CacheDb.Companion.DB_NAME
 import com.rwawrzyniak.discofetch.business.data.network.abstraction.DiscogsNetworkDataSource
 import com.rwawrzyniak.discofetch.business.data.network.implementation.NetworkConstants
+import com.rwawrzyniak.discofetch.business.data.network.implementation.ResponseInterceptor
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -51,7 +52,6 @@ object ApplicationModule {
 	@Provides
 	fun provideGsonBuilder(): Gson {
 		return GsonBuilder()
-			.excludeFieldsWithoutExposeAnnotation()
 			.create()
 	}
 
@@ -64,15 +64,28 @@ object ApplicationModule {
 			.create(DiscogsNetworkDataSource::class.java)
 	}
 
+	// TODO if there will be more interceptor just pass them as a list
 	@Singleton
 	@Provides
-	fun provideHttpClient(loggingInterceptor: HttpLoggingInterceptor): OkHttpClient {
-		return OkHttpClient().newBuilder().addInterceptor(loggingInterceptor).build()
+	fun provideHttpClient(
+		loggingInterceptor: HttpLoggingInterceptor,
+		responseInterceptor: ResponseInterceptor
+	): OkHttpClient {
+		return OkHttpClient().newBuilder()
+			.addInterceptor(loggingInterceptor)
+			.addInterceptor(responseInterceptor)
+			.build()
 	}
 
 	@Singleton
 	@Provides
 	fun provideHttpLoginInterceptor() =
 		HttpLoggingInterceptor().apply { setLevel(HttpLoggingInterceptor.Level.BODY) }
+
+	@Singleton
+	@Provides
+	fun provideResponseInterceptor() =
+		ResponseInterceptor()
+
 
 }

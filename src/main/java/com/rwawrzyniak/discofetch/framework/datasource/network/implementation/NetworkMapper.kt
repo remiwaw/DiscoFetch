@@ -16,8 +16,6 @@ class NetworkMapper @Inject constructor(): EntityMapper<SearchResult, AlbumCache
 		cover_image = entity.cover_image,
 		title = entity.title
 	)
-
-
 }
 
 

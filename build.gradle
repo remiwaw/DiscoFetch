@@ -82,6 +82,8 @@ dependencies {
 	implementation Dependencies.room_ktx
 	kapt AnnotationProcessing.room_compiler
 	implementation Dependencies.paging
+	implementation Dependencies.coil
+	implementation Dependencies.rateLimiter
 
 	// Retrofit
 	implementation Dependencies.retrofit

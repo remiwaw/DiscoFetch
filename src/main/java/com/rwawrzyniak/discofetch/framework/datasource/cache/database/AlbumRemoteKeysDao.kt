@@ -11,7 +11,7 @@ interface NewsRemoteKeyDao {
 	@Insert(onConflict = OnConflictStrategy.REPLACE)
 	fun insertAll(remoteKey: List<AlbumRemoteKeyEntity>)
 	@Query("SELECT * FROM AlbumRemoteKeyEntity WHERE albumId = :albumId")
-	fun remoteKeysByNewsId(albumId: Long): AlbumRemoteKeyEntity?
+	fun remoteKeysByAlbumId(albumId: Long): AlbumRemoteKeyEntity?
 	@Query("DELETE FROM AlbumRemoteKeyEntity")
 	fun clearRemoteKeys()
 }

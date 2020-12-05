@@ -17,7 +17,9 @@ interface DiscogsNetworkDataSource{
 							@Query("token") token: String = "PYRPLaTEXFXOhZHlrwluhzQYytAEiPyKPaWqkjmf"): SearchResponse
 
 	@GET("/database/search")
-	suspend fun loadAll(@Query("per_page") perPage: Int,
+	suspend fun loadAll(
+		@Query("type") type: String = "release", // TODO enum [ release, master, artist, label]
+		@Query("per_page") perPage: Int,
 						@Query("page") page: Int,
 						@Query("token") token: String = "PYRPLaTEXFXOhZHlrwluhzQYytAEiPyKPaWqkjmf"): SearchResponse
 

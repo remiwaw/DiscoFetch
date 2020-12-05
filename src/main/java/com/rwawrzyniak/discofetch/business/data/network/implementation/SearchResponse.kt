@@ -7,8 +7,8 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class SearchResponse(
 	val pagination: Pagination,
-	val searchResults: List<SearchResult>
-) : Parcelable
+	val results: List<SearchResult>
+): Parcelable
 
 @Parcelize
 data class Pagination(
@@ -28,7 +28,7 @@ data class SearchResult(
 	val cover_image: String,
 	val format: List<String>,
 	val genre: List<String>,
-	val id: Int,
+	val id: Long,
 	val label: List<String>,
 	val master_id: Int,
 	val master_url: String,
