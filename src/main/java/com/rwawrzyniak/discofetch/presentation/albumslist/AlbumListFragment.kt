@@ -3,6 +3,7 @@ package com.rwawrzyniak.discofetch.presentation.albumslist
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -18,7 +19,7 @@ import ru.ldralighieri.corbind.widget.textChanges
 
 @ExperimentalPagingApi
 @AndroidEntryPoint
-class AlbumListFragment : Fragment(R.layout.fragment_album_list) {
+class AlbumListFragment(private val inputMethodManager: InputMethodManager) : Fragment(R.layout.fragment_album_list) {
 
 	private val viewModel: AlbumListViewModel by viewModels()
 	private val albumsAdapter: AlbumsAdapter by lazy { AlbumsAdapter() }

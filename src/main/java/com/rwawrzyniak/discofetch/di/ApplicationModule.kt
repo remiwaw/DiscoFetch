@@ -1,6 +1,8 @@
 package com.rwawrzyniak.discofetch.di
 
+import android.app.Activity
 import android.content.Context
+import android.view.inputmethod.InputMethodManager
 import androidx.room.Room
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
@@ -23,6 +25,14 @@ import javax.inject.Singleton
 @Module
 @InstallIn(ApplicationComponent::class)
 object ApplicationModule {
+
+	@Singleton
+	@Provides
+	fun provideInputMethodManager(@ApplicationContext context: Context): InputMethodManager {
+		return context.getSystemService(
+			Activity.INPUT_METHOD_SERVICE
+		) as InputMethodManager
+	}
 
 	@Singleton
 	@Provides
