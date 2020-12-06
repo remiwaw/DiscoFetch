@@ -1,4 +1,4 @@
-package com.rwawrzyniak.discofetch.presentation.albumslist
+package com.rwawrzyniak.discofetch.presentation. albumslist
 
 import android.os.Bundle
 import android.util.Log
@@ -93,15 +93,19 @@ class AlbumListFragment : BaseFragment(R.layout.fragment_album_list) {
 			)
 			addLoadStateListener { loadState ->
 				Log.i("LOADING_TAG", loadState.source.toString())
-				binding.albumsRecyclerview.isVisible =
-					loadState.source.refresh is LoadState.NotLoading
+				binding.albumsRecyclerview.isVisible = loadState.source.refresh is LoadState.NotLoading
 				binding.inputLayout.isVisible = loadState.source.refresh is LoadState.NotLoading
+				binding.noHabits.isVisible = shouldShowNoData(loadState)
+
 				binding.progressBar.isVisible = loadState.source.refresh is LoadState.Loading
 				binding.retryButton.isVisible = loadState.source.refresh is LoadState.Error
 
 				showToastOnError(loadState)
 			}
 		}
+
+	private fun shouldShowNoData(loadState: CombinedLoadStates) =
+		loadState.source.refresh is LoadState.NotLoading && binding.albumsRecyclerview.adapter?.itemCount ?: 0 == 0
 
 	private fun showToastOnError(loadState: CombinedLoadStates) {
 		val errorState = loadState.source.append as? LoadState.Error
@@ -118,6 +122,7 @@ class AlbumListFragment : BaseFragment(R.layout.fragment_album_list) {
 	}
 
 	private fun setupUI() {
+		noHabits.isVisible = true
 		lifecycleScope.launch {
 			search_input
 				.textChanges()
