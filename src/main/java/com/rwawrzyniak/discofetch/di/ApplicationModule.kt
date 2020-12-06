@@ -10,7 +10,8 @@ import com.rwawrzyniak.discofetch.business.data.cache.abstraction.CacheDb
 import com.rwawrzyniak.discofetch.business.data.cache.abstraction.CacheDb.Companion.DB_NAME
 import com.rwawrzyniak.discofetch.business.data.network.abstraction.DiscogsNetworkDataSource
 import com.rwawrzyniak.discofetch.business.data.network.implementation.NetworkConstants
-import com.rwawrzyniak.discofetch.business.data.network.implementation.ResponseInterceptor
+import com.rwawrzyniak.discofetch.business.data.network.interceptors.RequestInterceptor
+import com.rwawrzyniak.discofetch.business.data.network.interceptors.ResponseInterceptor
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -79,11 +80,13 @@ object ApplicationModule {
 	@Provides
 	fun provideHttpClient(
 		loggingInterceptor: HttpLoggingInterceptor,
-		responseInterceptor: ResponseInterceptor
+		responseInterceptor: ResponseInterceptor,
+		requestInterceptor: RequestInterceptor
 	): OkHttpClient {
 		return OkHttpClient().newBuilder()
 			.addInterceptor(loggingInterceptor)
 			.addInterceptor(responseInterceptor)
+			.addInterceptor(requestInterceptor)
 			.build()
 	}
 
@@ -94,8 +97,10 @@ object ApplicationModule {
 
 	@Singleton
 	@Provides
-	fun provideResponseInterceptor() =
-		ResponseInterceptor()
+	fun provideResponseInterceptor() = ResponseInterceptor()
+	@Singleton
+	@Provides
+	fun provideRequestInterceptor() = RequestInterceptor()
 
 
 }

@@ -5,7 +5,7 @@ import com.rwawrzyniak.discofetch.business.domain.model.AlbumInAList
 import com.rwawrzyniak.discofetch.business.domain.util.EntityMapper
 import javax.inject.Inject
 
-class CacheMapper @Inject constructor(): EntityMapper<AlbumCacheEntity, AlbumInAList> {
+class AlbumInAListCacheCacheMapper @Inject constructor(): EntityMapper<AlbumCacheEntity, AlbumInAList> {
 
     override fun mapFromEntity(entity: AlbumCacheEntity): AlbumInAList {
         return AlbumInAList(

@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
@@ -12,7 +11,6 @@ import androidx.paging.ExperimentalPagingApi
 import com.rwawrzyniak.discofetch.R
 import com.rwawrzyniak.discofetch.databinding.FragmentArtistDetailsBinding
 import com.rwawrzyniak.discofetch.presentation.artistdetail.state.ArtistDetailsIntent
-import com.rwawrzyniak.discofetch.presentation.recorddetail.state.AlbumDetailsIntent
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

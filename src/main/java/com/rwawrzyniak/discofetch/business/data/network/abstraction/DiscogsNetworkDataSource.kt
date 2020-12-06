@@ -17,14 +17,13 @@ interface DiscogsNetworkDataSource{
 	suspend fun searchByAlbumTitle(@Query("release_title") albumName: String = "",
 								   @Query("type") type: String = "release",
 								   @Query("per_page") perPage: Int,
-								   @Query("page") page: Int,
-								   @Query("token") token: String = "PYRPLaTEXFXOhZHlrwluhzQYytAEiPyKPaWqkjmf"): SearchResponse
+								   @Query("page") page: Int): SearchResponse
 
 
 //	https://api.discogs.com/releases/2028757
 	@GET("/releases/{releaseId}")
-	suspend fun getReleaseById(@Path("releaseId") releaseId: Long,  @Query("token") token: String = "PYRPLaTEXFXOhZHlrwluhzQYytAEiPyKPaWqkjmf"): GetReleaseByIdResponse
+	suspend fun getReleaseById(@Path("releaseId") releaseId: Long): GetReleaseByIdResponse
 
 	@GET("/artists/{artistId}")
-	suspend fun getArtistById(@Path("artistId") artistId: Long, @Query("token") token: String = "PYRPLaTEXFXOhZHlrwluhzQYytAEiPyKPaWqkjmf"): GetArtistResponse
+	suspend fun getArtistById(@Path("artistId") artistId: Long): GetArtistResponse
 }

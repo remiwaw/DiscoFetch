@@ -3,8 +3,7 @@ package com.rwawrzyniak.discofetch.business.data.network.implementation
 import androidx.paging.*
 import com.rwawrzyniak.discofetch.business.data.cache.abstraction.CacheDb
 import com.rwawrzyniak.discofetch.business.data.network.abstraction.DiscogsNetworkDataSource
-import com.rwawrzyniak.discofetch.business.domain.model.AlbumDetails
-import com.rwawrzyniak.discofetch.business.data.cache.mappers.CacheMapper
+import com.rwawrzyniak.discofetch.business.data.cache.mappers.AlbumInAListCacheCacheMapper
 import com.rwawrzyniak.discofetch.business.data.network.mappers.SearchResponseNetworkMapper
 import com.rwawrzyniak.discofetch.business.domain.model.AlbumInAList
 import retrofit2.HttpException
@@ -17,7 +16,7 @@ class AlbumPagingSource constructor(
 	private val query: String,
 	private val api: DiscogsNetworkDataSource,
 	private val searchResponseNetworkMapper: SearchResponseNetworkMapper,
-	private val cacheMapper: CacheMapper,
+	private val albumInAListCacheCacheMapper: AlbumInAListCacheCacheMapper,
 	private val db: CacheDb
 ) :
 	PagingSource<Int, AlbumInAList>() {
@@ -32,7 +31,7 @@ class AlbumPagingSource constructor(
 
 			db.getAlbumDao().insertAll(albumsEntity)
 
-			val albumInALists: List<AlbumInAList> = albumsEntity.map { cacheMapper.mapFromEntity(it) }
+			val albumInALists: List<AlbumInAList> = albumsEntity.map { albumInAListCacheCacheMapper.mapFromEntity(it) }
 
 			LoadResult.Page(
 				albumInALists,
