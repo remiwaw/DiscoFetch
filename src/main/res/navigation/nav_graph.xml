@@ -12,11 +12,12 @@
 		tools:layout="@layout/fragment_album_list" >
 		<action
 			android:id="@+id/action_searchFragment_to_albumDetailsFragment"
-			app:destination="@id/albumDetailsFragment" >
+			app:destination="@id/albumDetailsFragment"
+			app:enterAnim="@anim/slide_in_left">
 			<argument
 				android:name="albumId"
-				app:argType="long"
-				android:defaultValue="-1L"/>
+				android:defaultValue="-1L"
+				app:argType="long" />
 		</action>
 	</fragment>
 	<fragment
@@ -36,7 +37,8 @@
 			app:destination="@id/artistDetailsFragment" />
 		<action
 			android:id="@+id/action_albumDetailsFragment_to_artistDetailsFragment2"
-			app:destination="@id/artistDetailsFragment" />
+			app:destination="@id/artistDetailsFragment"
+			app:enterAnim="@anim/slide_in_left" />
 	</fragment>
 	<fragment
 		android:id="@+id/artistDetailsFragment"

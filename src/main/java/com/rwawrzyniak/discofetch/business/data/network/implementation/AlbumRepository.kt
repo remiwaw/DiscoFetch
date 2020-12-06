@@ -17,7 +17,6 @@ import javax.inject.Inject
 @ExperimentalPagingApi
 class AlbumRepository @ExperimentalPagingApi
 @Inject constructor(
-	// TODO Move here DB persistance, for later caching
 	private val albumPagingSourceFactory: AlbumPagingSourceFactory,
 	private val discogsNetworkDataSource: DiscogsNetworkDataSource,
 	private val getReleaseByIdNetworkMapper: GetReleaseByIdNetworkMapper,

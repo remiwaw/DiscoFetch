@@ -29,7 +29,8 @@ class AlbumPagingSource constructor(
 
 			val albumsEntity = apiResponse.results.map { searchResponseNetworkMapper.mapFromEntity(it) }
 
-			db.getAlbumDao().insertAll(albumsEntity)
+			// TODO implement caching
+//			db.getAlbumDao().insertAll(albumsEntity)
 
 			val albumInALists: List<AlbumInAList> = albumsEntity.map { albumInAListCacheCacheMapper.mapFromEntity(it) }
 
