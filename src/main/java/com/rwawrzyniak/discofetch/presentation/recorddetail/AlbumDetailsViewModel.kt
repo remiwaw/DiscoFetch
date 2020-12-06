@@ -54,7 +54,7 @@ class AlbumDetailsViewModel @ExperimentalPagingApi
 				UIState.Success(mapToViewState(albumById))
 
 			} catch (e: Exception) {
-				UIState.Error(e.localizedMessage)
+				UIState.Error(e.message ?: "Unknown error")
 			}
 		}
 

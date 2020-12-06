@@ -22,6 +22,6 @@ interface DiscogsNetworkDataSource{
 
 //	https://api.discogs.com/releases/2028757
 	@GET("/releases/{releaseId}")
-	suspend fun getReleaseById(@Path("releaseId") releaseId: Long): GetReleaseByIdResponse
+	suspend fun getReleaseById(@Path("releaseId") releaseId: Long,  @Query("token") token: String = "PYRPLaTEXFXOhZHlrwluhzQYytAEiPyKPaWqkjmf"): GetReleaseByIdResponse
 
 }
