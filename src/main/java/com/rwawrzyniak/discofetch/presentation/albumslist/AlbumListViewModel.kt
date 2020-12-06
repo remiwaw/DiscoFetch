@@ -20,9 +20,21 @@ class AlbumListViewModel @ExperimentalPagingApi
 	@Assisted private val savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
+	private var currentQueryValue: String? = null
+	private var currentSearchResult: Flow<PagingData<AlbumInAList>>? = null
+
 	fun searchRepo(queryString: String): Flow<PagingData<AlbumInAList>> {
-		return repository.getSearchResultStream(queryString)
+		val lastResult = currentSearchResult
+		if (queryString == currentQueryValue && lastResult != null) {
+			return lastResult
+		}
+		currentQueryValue = queryString
+
+		val newResult = repository.getSearchResultStream(queryString)
 			.cachedIn(viewModelScope)
+
+		currentSearchResult = newResult
+		return newResult
 	}
 }
 
