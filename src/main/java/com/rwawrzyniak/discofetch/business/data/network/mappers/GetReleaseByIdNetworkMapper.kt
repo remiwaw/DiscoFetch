@@ -11,9 +11,9 @@ class GetReleaseByIdNetworkMapper @Inject constructor(): EntityMapper<GetRelease
 	override fun mapFromEntity(entity: GetReleaseByIdResponse): AlbumDetails {
 		return AlbumDetails(
 			id = entity.id,
-			cover_image_url = entity.thumb,
+			coverImageUrl = entity.thumb ?: "",
 			title = entity.title,
-			releasedYear = entity.released,
+			releasedYear = entity.released ?: "",
 			artists = entity.artists.map { Artist(it.id, it.name) },
 			tracks = entity.tracklist.map { it.title }
 		)

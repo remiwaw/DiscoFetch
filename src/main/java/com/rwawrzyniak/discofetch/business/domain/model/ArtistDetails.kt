@@ -4,11 +4,9 @@ import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class AlbumDetails(
+data class ArtistDetails(
 	val id: Long,
-	var coverImageUrl: String,
-	val title: String,
-	val releasedYear: String,
-	val artists: List<Artist> = listOf(),
-	val tracks: List<String>
+	val name: String,
+	val profile: String,
+	val urls: List<String>
 ) : Parcelable

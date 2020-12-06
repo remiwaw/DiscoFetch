@@ -31,6 +31,22 @@
 			android:name="imageUrl"
 			app:argType="string"
 			android:defaultValue = "" />
+		<action
+			android:id="@+id/action_albumDetailsFragment_to_artistDetailsFragment"
+			app:destination="@id/artistDetailsFragment" />
+		<action
+			android:id="@+id/action_albumDetailsFragment_to_artistDetailsFragment2"
+			app:destination="@id/artistDetailsFragment" />
+	</fragment>
+	<fragment
+		android:id="@+id/artistDetailsFragment"
+		android:name="com.rwawrzyniak.discofetch.presentation.artistdetail.ArtistDetailsFragment"
+		android:label="fragment_artist_details"
+		tools:layout="@layout/fragment_artist_details">
+		<argument
+			android:name="artistId"
+			app:argType="long"
+			android:defaultValue="-1L" />
 	</fragment>
 
 </navigation>

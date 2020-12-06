@@ -17,7 +17,7 @@
 	<androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
 		xmlns:tools="http://schemas.android.com/tools"
 		android:layout_width="match_parent"
-		android:layout_height="match_parent">
+		android:layout_height="wrap_content">
 
 		<ProgressBar
 			android:id="@+id/indeterminateBar"
@@ -74,18 +74,19 @@
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toStartOf="parent"
 			app:layout_constraintTop_toBottomOf="@id/albumTitle"
+			app:layout_constraintBottom_toTopOf="@id/artists"
 			tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
-		<TextView
+		<ListView
 			android:id="@+id/artists"
-			android:layout_width="wrap_content"
-			android:layout_height="0dp"
-			tools:text="Nirvana, Artist2, Artist3"
-			android:text="@{vm.viewState.toData().artists.toString()}"
-			android:textSize="20sp"
+			app:items="@{vm.viewState.toData().artists}"
+			android:layout_width="0dp"
+			android:layout_height="50dp"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toBottomOf="@id/iv" />
+			app:layout_constraintTop_toBottomOf="@id/iv"
+			app:layout_constraintBottom_toTopOf="@+id/tracks"
+			/>
 
 		<TextView
 			android:id="@+id/tracks"

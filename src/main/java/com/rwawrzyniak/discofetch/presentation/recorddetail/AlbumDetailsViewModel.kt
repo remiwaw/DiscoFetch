@@ -50,7 +50,7 @@ class AlbumDetailsViewModel @ExperimentalPagingApi
 			_state.value = UIState.Loading
 			_state.value = try {
 				val albumById = repository.getAlbumById(albumId)
-				albumById.cover_image_url = imageUrl
+				albumById.coverImageUrl = imageUrl
 				UIState.Success(mapToViewState(albumById))
 
 			} catch (e: Exception) {
@@ -60,19 +60,16 @@ class AlbumDetailsViewModel @ExperimentalPagingApi
 
 	// TODO this should be in use case
 	private fun mapToViewState(albumDetails: AlbumDetails): AlbumDetailViewState {
-		val artistsSpannableStringBuilder = SpannableStringBuilder()
 		val tracksSpannableStringBuilder = SpannableStringBuilder()
-		albumDetails.artists.forEach{
-			artistsSpannableStringBuilder.appendLine(it.name)
-		}
 		albumDetails.tracks.forEach{
 			tracksSpannableStringBuilder.appendLine(it)
 		}
+
 		return AlbumDetailViewState(
-			cover_image_url = albumDetails.cover_image_url,
+			cover_image_url = albumDetails.coverImageUrl,
 			title = albumDetails.title,
 			releasedYear = SpannableString(albumDetails.releasedYear),
-			artists = artistsSpannableStringBuilder.toSpannable(),
+			artists = albumDetails.artists,
 			tracks = tracksSpannableStringBuilder.toSpannable()
 		)
 	}

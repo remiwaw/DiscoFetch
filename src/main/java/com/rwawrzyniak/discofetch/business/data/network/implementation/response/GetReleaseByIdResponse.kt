@@ -22,13 +22,13 @@ data class GetReleaseByIdResponse(
 	val master_url: String,
 	val notes: String,
 	val num_for_sale: Int,
-	val released: String,
+	val released: String?,
 	val released_formatted: String,
 	val resource_url: String,
 	val series: List<Any>,
 	val status: String,
 	val styles: List<String>,
-	val thumb: String,
+	val thumb: String?,
 	val title: String,
 	val tracklist: List<Tracklist>,
 	val uri: String,
@@ -79,15 +79,6 @@ data class Format(
     val descriptions: List<String>,
     val name: String,
     val qty: String
-)
-
-data class Image(
-    val height: Int,
-    val resource_url: String,
-    val type: String,
-    val uri: String,
-    val uri150: String,
-    val width: Int
 )
 
 data class Label(

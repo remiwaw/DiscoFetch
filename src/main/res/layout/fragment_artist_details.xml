@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+	<data>
+		<variable
+			name="vm"
+			type="com.rwawrzyniak.discofetch.presentation.artistdetail.ArtistDetailsViewModel" />
+	</data>
+
+	<ScrollView
+		xmlns:app="http://schemas.android.com/apk/res-auto"
+		xmlns:tools="http://schemas.android.com/tools"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		>
+
+		<androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+			xmlns:tools="http://schemas.android.com/tools"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent">
+
+			<ProgressBar
+				android:id="@+id/indeterminateBar"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toTopOf="parent"
+				app:layout_constraintBottom_toBottomOf="parent"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_gravity="center"
+				tools:visibility="gone"
+				app:showOnLoading="@{ vm.viewState }"
+				/>
+
+			<TextView
+				android:id="@+id/errorText"
+				android:layout_width="wrap_content"
+				android:layout_height="0dp"
+				app:showOnError="@{ vm.viewState }"
+				android:textSize="20sp"
+				tools:visibility="gone"
+				android:layout_gravity="center"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toTopOf="parent" />
+
+			<androidx.constraintlayout.widget.Group
+				android:id="@+id/visibleGroup"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:visibility="visible"
+				app:hideOnLoading="@{ vm.viewState }"
+				app:constraint_referenced_ids="name,profile,links" />
+
+			<TextView
+				android:id="@+id/name"
+				android:layout_width="wrap_content"
+				android:layout_height="0dp"
+				android:text="@{vm.viewState.toData().name}"
+				android:textSize="20sp"
+				tools:text = "Nickelback"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toTopOf="parent" />
+
+			<TextView
+				android:id="@+id/profile"
+				android:layout_width="wrap_content"
+				android:layout_height="0dp"
+				tools:text="Alternative Rock (Modern Rock) band from Hanna, Alberta (Canada).\r\n\r\nNickelback formed in 1995. The band having sold almost 50 million albums worldwide, ranking as the 11th best selling music act of the 2000s, and is the 2nd best selling foreign act in the U.S. behind The Beatles for the 2000's."
+				android:text="@{vm.viewState.toData().profile}"
+				android:textSize="20sp"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@id/name" />
+
+			<TextView
+				android:id="@+id/links"
+				android:autoLink="web"
+				android:layout_width="wrap_content"
+				android:layout_height="0dp"
+				tools:text="links here"
+				android:textSize="20sp"
+				android:text="@{vm.viewState.toData().urls}"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@id/profile" />
+
+		</androidx.constraintlayout.widget.ConstraintLayout>
+	</ScrollView>
+</layout>

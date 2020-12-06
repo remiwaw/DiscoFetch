@@ -1,5 +1,6 @@
 package com.rwawrzyniak.discofetch.business.data.network.abstraction
 
+import com.rwawrzyniak.discofetch.business.data.network.implementation.response.GetArtistResponse
 import com.rwawrzyniak.discofetch.business.data.network.implementation.response.GetReleaseByIdResponse
 import com.rwawrzyniak.discofetch.business.data.network.implementation.response.SearchResponse
 import retrofit2.http.GET
@@ -24,4 +25,6 @@ interface DiscogsNetworkDataSource{
 	@GET("/releases/{releaseId}")
 	suspend fun getReleaseById(@Path("releaseId") releaseId: Long,  @Query("token") token: String = "PYRPLaTEXFXOhZHlrwluhzQYytAEiPyKPaWqkjmf"): GetReleaseByIdResponse
 
+	@GET("/artists/{artistId}")
+	suspend fun getArtistById(@Path("artistId") artistId: Long, @Query("token") token: String = "PYRPLaTEXFXOhZHlrwluhzQYytAEiPyKPaWqkjmf"): GetArtistResponse
 }
