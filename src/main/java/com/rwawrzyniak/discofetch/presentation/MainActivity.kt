@@ -1,36 +1,28 @@
 package com.rwawrzyniak.discofetch.presentation
 
-import android.content.Context
 import android.graphics.Rect
-import android.os.Bundle
-import android.os.PersistableBundle
 import android.view.MotionEvent
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
+import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.NavController
-import androidx.navigation.fragment.NavHostFragment
 import com.rwawrzyniak.discofetch.R
+import com.rwawrzyniak.discofetch.presentation.common.ChromeExtensionsProvider
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity(R.layout.activity_main){
+class MainActivity : AppCompatActivity(R.layout.activity_main), ChromeExtensionsProvider {
 
 	@Inject
 	lateinit var inputMethodManager: InputMethodManager
 
-	override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
-		super.onCreate(savedInstanceState, persistentState)
-		getNavController().navigate(R.id.searchFragment)
-	}
-
-	private fun getNavController(): NavController {
-		val navHostFragment =
-			supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
-		return navHostFragment.navController
+	override fun getAppActionBar(): ActionBar {
+		setSupportActionBar(mainActionBar)
+		return requireNotNull(supportActionBar)
 	}
 
 	// This clear focus for all edit texts, when clicked outside.

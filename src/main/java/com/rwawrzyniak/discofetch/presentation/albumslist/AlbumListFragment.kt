@@ -6,7 +6,6 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -16,16 +15,18 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.rwawrzyniak.discofetch.R
 import com.rwawrzyniak.discofetch.business.domain.model.AlbumInAList
 import com.rwawrzyniak.discofetch.databinding.FragmentAlbumListBinding
+import com.rwawrzyniak.discofetch.presentation.common.BaseFragment
+import com.rwawrzyniak.discofetch.presentation.common.ChromeConfiguration
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_album_list.*
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.launch
 import ru.ldralighieri.corbind.widget.textChanges
 
 @ExperimentalPagingApi
 @AndroidEntryPoint
-class AlbumListFragment : Fragment(R.layout.fragment_album_list) {
-
+class AlbumListFragment : BaseFragment(R.layout.fragment_album_list) {
 	private lateinit var binding: FragmentAlbumListBinding
 
 	private val viewModel: AlbumListViewModel by viewModels()
@@ -55,6 +56,11 @@ class AlbumListFragment : Fragment(R.layout.fragment_album_list) {
 	}
 	}
 
+	override fun getChromeConfig(): ChromeConfiguration =
+		ChromeConfiguration(
+			showActionBar = false
+		)
+
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 		binding = FragmentAlbumListBinding.inflate(layoutInflater)
@@ -62,8 +68,6 @@ class AlbumListFragment : Fragment(R.layout.fragment_album_list) {
 
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
-		(activity as AppCompatActivity).supportActionBar?.setDisplayShowTitleEnabled(false)
-		setHasOptionsMenu(true)
 		setupUI()
 	}
 
@@ -75,7 +79,7 @@ class AlbumListFragment : Fragment(R.layout.fragment_album_list) {
 		lifecycleScope.launch {
 			search_input
 				.textChanges()
-				.debounce(2000)
+				.debounce(1000) // Wait for end type 1 second before executing request.
 				.collectLatest { charSequence ->
 					Log.i("ASASSA", charSequence.toString())
 					viewModel.searchRepo(charSequence.toString().trim()).collectLatest { pagingData ->

@@ -2,4 +2,7 @@
 	<string name="app_name">Disco fetch</string>
 	<string name="search_hint">Album name below:</string>
     <string name="retry">Retry</string>
+	<string name="albumListFragmentTitle">Album list</string>
+	<string name="aristDetailsFragmentTitle">Artist details</string>
+	<string name="albumDetailsFragmentTitle">Album details</string>
 </resources>

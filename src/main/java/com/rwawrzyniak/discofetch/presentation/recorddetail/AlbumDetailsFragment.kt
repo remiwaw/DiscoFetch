@@ -14,16 +14,23 @@ import androidx.paging.ExperimentalPagingApi
 import com.rwawrzyniak.discofetch.R
 import com.rwawrzyniak.discofetch.business.domain.model.Artist
 import com.rwawrzyniak.discofetch.databinding.FragmentAlbumDetailsBinding
+import com.rwawrzyniak.discofetch.presentation.common.BaseFragment
+import com.rwawrzyniak.discofetch.presentation.common.ChromeConfiguration
 import com.rwawrzyniak.discofetch.presentation.recorddetail.state.AlbumDetailsIntent
 import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
 @ExperimentalPagingApi
-class AlbumDetailsFragment : Fragment(R.layout.fragment_album_details) {
+class AlbumDetailsFragment : BaseFragment(R.layout.fragment_album_details) {
 	private val args: AlbumDetailsFragmentArgs by navArgs()
 	private val viewModel: AlbumDetailsViewModel by viewModels()
 	private val artistAdapter : ArrayAdapter<Artist> by lazy { ArtistListAdapter(requireContext())}
+
+	override fun getChromeConfig(): ChromeConfiguration =
+		ChromeConfiguration(
+			actionBarTitle = getString(R.string.albumDetailsFragmentTitle),
+		)
 
 	override fun onCreateView(
 		inflater: LayoutInflater,
@@ -50,7 +57,4 @@ class AlbumDetailsFragment : Fragment(R.layout.fragment_album_details) {
 		super.onViewCreated(view, savedInstanceState)
 		viewModel.send(AlbumDetailsIntent.LoadAlbum(args.albumId, args.imageUrl))
 	}
-
-
-
 }
