@@ -10,10 +10,11 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import coil.api.load
 import com.rwawrzyniak.discofetch.R
-import com.rwawrzyniak.discofetch.business.domain.model.Album
+import com.rwawrzyniak.discofetch.business.domain.model.AlbumDetails
+import com.rwawrzyniak.discofetch.business.domain.model.AlbumInAList
 import kotlinx.android.synthetic.main.album_item_layout.view.*
 
-class AlbumsAdapter : PagingDataAdapter<Album, AlbumsAdapter.AlbumViewHolder>(DIFF_CALLBACK) {
+class AlbumsAdapter(private val onClickListener: (AlbumInAList) -> Unit) : PagingDataAdapter<AlbumInAList, AlbumsAdapter.AlbumViewHolder>(DIFF_CALLBACK) {
 
 	override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AlbumViewHolder =
 		AlbumViewHolder(
@@ -22,16 +23,12 @@ class AlbumsAdapter : PagingDataAdapter<Album, AlbumsAdapter.AlbumViewHolder>(DI
 		)
 
 	override fun onBindViewHolder(holder: AlbumViewHolder, position: Int) {
-		val album: Album? = getItem(position)
+		val albumInAList: AlbumInAList? = getItem(position)
 
-		album?.let {
-
-			holder.albumTitle.text = album.title
-			holder.iv.load(album.cover_image) { placeholder(R.drawable.ic_baseline_block_24) }
-
-			holder.iv.setOnClickListener {
-				// TODO navigate to details
-			}
+		albumInAList?.let {
+			holder.itemView.setOnClickListener{ onClickListener(albumInAList) }
+			holder.albumTitle.text = albumInAList.title
+			holder.iv.load(albumInAList.cover_image) { placeholder(R.drawable.ic_baseline_block_24) }
 		}
 	}
 
@@ -43,17 +40,17 @@ class AlbumsAdapter : PagingDataAdapter<Album, AlbumsAdapter.AlbumViewHolder>(DI
 
 	companion object {
 		private val DIFF_CALLBACK = object :
-			DiffUtil.ItemCallback<Album>() {
+			DiffUtil.ItemCallback<AlbumInAList>() {
 
 			override fun areItemsTheSame(
-				oldAlbum: Album,
-				newAlbum: Album
-			) = oldAlbum.id == newAlbum.id
+				oldAlbumInAList: AlbumInAList,
+				newAlbumInAList: AlbumInAList
+			) = oldAlbumInAList.id == newAlbumInAList.id
 
 			override fun areContentsTheSame(
-				oldAlbum: Album,
-				newAlbum: Album
-			) = oldAlbum == newAlbum
+				oldAlbumInAList: AlbumInAList,
+				newAlbumInAList: AlbumInAList
+			) = oldAlbumInAList == newAlbumInAList
 		}
 	}
 }

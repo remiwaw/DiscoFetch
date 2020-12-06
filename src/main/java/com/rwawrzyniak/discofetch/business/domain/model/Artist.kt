@@ -4,8 +4,11 @@ import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class Album(
+data class Artist(
 	val id: Long,
-	val cover_image: String,
-	val title: String
-) : Parcelable
+	val name: String
+) : Parcelable{
+	override fun toString(): String = name
+}
+
+

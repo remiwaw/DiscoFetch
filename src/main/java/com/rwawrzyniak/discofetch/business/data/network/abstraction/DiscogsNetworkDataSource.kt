@@ -1,7 +1,9 @@
 package com.rwawrzyniak.discofetch.business.data.network.abstraction
 
-import com.rwawrzyniak.discofetch.business.data.network.implementation.SearchResponse
+import com.rwawrzyniak.discofetch.business.data.network.implementation.response.GetReleaseByIdResponse
+import com.rwawrzyniak.discofetch.business.data.network.implementation.response.SearchResponse
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 
@@ -11,19 +13,15 @@ interface DiscogsNetworkDataSource{
 	// https://api.discogs.com/database/search?release_title=nevermind&artist=nirvana&per_page=3&page=1&token=PYRPLaTEXFXOhZHlrwluhzQYytAEiPyKPaWqkjmf
 
 	@GET("/database/search")
-	suspend fun searchByAlbum(@Query("release_title") albumName: String = "",
-							@Query("per_page") perPage: Int,
-							@Query("page") page: Int,
-							@Query("token") token: String = "PYRPLaTEXFXOhZHlrwluhzQYytAEiPyKPaWqkjmf"): SearchResponse
+	suspend fun searchByAlbumTitle(@Query("release_title") albumName: String = "",
+								   @Query("type") type: String = "release",
+								   @Query("per_page") perPage: Int,
+								   @Query("page") page: Int,
+								   @Query("token") token: String = "PYRPLaTEXFXOhZHlrwluhzQYytAEiPyKPaWqkjmf"): SearchResponse
 
-	@GET("/database/search")
-	suspend fun loadAll(
-		@Query("type") type: String = "release", // TODO enum [ release, master, artist, label]
-		@Query("per_page") perPage: Int,
-						@Query("page") page: Int,
-						@Query("token") token: String = "PYRPLaTEXFXOhZHlrwluhzQYytAEiPyKPaWqkjmf"): SearchResponse
 
-//	@GET("albums/id")
-//	suspend fun getAlbum(id: String): List<Album>
+//	https://api.discogs.com/releases/2028757
+	@GET("/releases/{releaseId}")
+	suspend fun getReleaseById(@Path("releaseId") releaseId: Long): GetReleaseByIdResponse
 
 }

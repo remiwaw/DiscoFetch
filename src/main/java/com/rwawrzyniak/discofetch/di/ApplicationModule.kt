@@ -36,7 +36,7 @@ object ApplicationModule {
 
 	@Singleton
 	@Provides
-	fun provideYourDatabase(
+	fun provideDatabase(
 		@ApplicationContext app: Context
 	) = Room.databaseBuilder(
 		app,
@@ -46,7 +46,7 @@ object ApplicationModule {
 
 	@Singleton
 	@Provides
-	fun provideYourDao(db: CacheDb) = db.getAlbumDao()
+	fun provideAlbumDao(db: CacheDb) = db.getAlbumDao()
 
 	@JvmStatic
 	@Singleton

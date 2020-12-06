@@ -1,4 +1,4 @@
-package com.rwawrzyniak.discofetch.business.data.network.implementation
+package com.rwawrzyniak.discofetch.business.data.network.implementation.response
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
@@ -23,7 +23,7 @@ data class Pagination(
 data class SearchResult(
 	val barcode: List<String>,
 	val catno: String,
-	val community: Community,
+//	val community: Community,
 	val country: String,
 	val cover_image: String,
 	val format: List<String>,
@@ -48,11 +48,11 @@ data class Urls(
     val next: String
 ): Parcelable
 
-@Parcelize
-data class Community(
-    val have: Int,
-    val want: Int
-) : Parcelable
+//@Parcelize
+//data class Community(
+//    val have: Int,
+//    val want: Int
+//) : Parcelable
 
 @Parcelize
 data class UserData(

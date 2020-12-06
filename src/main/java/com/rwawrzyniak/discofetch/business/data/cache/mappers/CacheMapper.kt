@@ -1,21 +1,21 @@
 package com.rwawrzyniak.discofetch.business.data.cache.mappers
 
-import com.rwawrzyniak.discofetch.business.domain.model.Album
-import com.rwawrzyniak.discofetch.business.domain.util.EntityMapper
 import com.rwawrzyniak.discofetch.business.domain.model.AlbumCacheEntity
+import com.rwawrzyniak.discofetch.business.domain.model.AlbumInAList
+import com.rwawrzyniak.discofetch.business.domain.util.EntityMapper
 import javax.inject.Inject
 
-class CacheMapper @Inject constructor(): EntityMapper<AlbumCacheEntity, Album> {
+class CacheMapper @Inject constructor(): EntityMapper<AlbumCacheEntity, AlbumInAList> {
 
-    override fun mapFromEntity(entity: AlbumCacheEntity): Album {
-        return Album(
+    override fun mapFromEntity(entity: AlbumCacheEntity): AlbumInAList {
+        return AlbumInAList(
             id = entity.id,
             title = entity.title,
             cover_image = entity.cover_image
         )
     }
 
-    override fun mapToEntity(domainModel: Album): AlbumCacheEntity {
+    override fun mapToEntity(domainModel: AlbumInAList): AlbumCacheEntity {
         return AlbumCacheEntity(
             id = domainModel.id,
             title = domainModel.title,

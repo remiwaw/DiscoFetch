@@ -9,7 +9,8 @@ import androidx.paging.ExperimentalPagingApi
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.rwawrzyniak.discofetch.business.data.network.implementation.AlbumRepository
-import com.rwawrzyniak.discofetch.business.domain.model.Album
+import com.rwawrzyniak.discofetch.business.domain.model.AlbumDetails
+import com.rwawrzyniak.discofetch.business.domain.model.AlbumInAList
 import kotlinx.coroutines.flow.Flow
 
 @ExperimentalPagingApi
@@ -19,7 +20,7 @@ class AlbumListViewModel @ExperimentalPagingApi
 	@Assisted private val savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
-	fun searchRepo(queryString: String): Flow<PagingData<Album>> {
+	fun searchRepo(queryString: String): Flow<PagingData<AlbumInAList>> {
 		return repository.getSearchResultStream(queryString)
 			.cachedIn(viewModelScope)
 	}

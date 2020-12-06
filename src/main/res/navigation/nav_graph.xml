@@ -11,9 +11,26 @@
 		android:label="fragment_search"
 		tools:layout="@layout/fragment_album_list" >
 		<action
-			android:id="@+id/action_searchView_to_placeholder"
-			app:destination="@id/placeholder" />
+			android:id="@+id/action_searchFragment_to_albumDetailsFragment"
+			app:destination="@id/albumDetailsFragment" >
+			<argument
+				android:name="albumId"
+				app:argType="long"
+				android:defaultValue="-1L"/>
+		</action>
 	</fragment>
-	<fragment android:id="@+id/placeholder" />
+	<fragment
+		android:id="@+id/albumDetailsFragment"
+		android:name="com.rwawrzyniak.discofetch.presentation.recorddetail.AlbumDetailsFragment"
+		android:label="AlbumDetailsFragment" >
+		<argument
+			android:name="albumId"
+			app:argType="long"
+			android:defaultValue="-1L" />
+		<argument
+			android:name="imageUrl"
+			app:argType="string"
+			android:defaultValue = "" />
+	</fragment>
 
 </navigation>

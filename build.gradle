@@ -9,8 +9,10 @@ apply plugin: 'dagger.hilt.android.plugin'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+apply plugin: "androidx.navigation.safeargs.kotlin"
 
 android {
+	dataBinding.enabled = true
 	compileSdkVersion Versions.compilesdk
 	defaultConfig {
 		applicationId Application.id
@@ -21,6 +23,7 @@ android {
 
 		testInstrumentationRunner AndroidTestDependencies.instrumentation_runner
 	}
+
 	buildTypes {
 		debug {
 			minifyEnabled false
@@ -61,7 +64,8 @@ dependencies {
 	implementation Dependencies.hiltAndroid
 	implementation Dependencies.hiltViewModel
 	implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-	kapt AnnotationProcessing.hiltAndroidCompiler
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    kapt AnnotationProcessing.hiltAndroidCompiler
 	kapt AnnotationProcessing.hiltCompiler
 
     // Kotlin
