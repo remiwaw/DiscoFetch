@@ -6,5 +6,7 @@
 	<string name="aristDetailsFragmentTitle">Artist details</string>
 	<string name="albumDetailsFragmentTitle">Album details</string>
 	<string name="albumSearchPlaceholder">Album search here</string>
-	<string name="noData">No data ... Yet</string>
+	<string name="noData">No data … Yet</string>
+	<string name="no_connectivity_title">No connectivity</string>
+	<string name="no_connectivity_explain">Because there is no internet connection app won\'\' be working correctly. Caching is still in progress.</string>
 </resources>

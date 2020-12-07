@@ -88,6 +88,7 @@ dependencies {
 	implementation Dependencies.paging
 	implementation Dependencies.coil
 	implementation Dependencies.corbind
+	implementation Dependencies.material_dialogs
 
 	// Retrofit
 	implementation Dependencies.retrofit

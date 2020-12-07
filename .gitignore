@@ -4,3 +4,5 @@
 /buildSrc/build
 buildSrc/.gradle/
 .gradle
+/app/build/tmp
+app/build/

@@ -11,7 +11,7 @@ object Versions {
 
 	const val gradle = "3.5.3"
     const val compilesdk = 29
-    const val minsdk = 21
+    const val minsdk = 23
     const val targetsdk = 29
     const val kotlin = "1.4.20"
     const val ktx = "1.2.0"
