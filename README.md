@@ -20,7 +20,7 @@ TODO:
 * Styling
 * Remove not used dependencies
 
-![](DiscoFetcherSmall.gif)
+![](DiscoFetchSmall.gif)
 
 # Credits
 https://github.com/googlecodelabs/android-paging
