@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+	<data>
+		<variable
+			name="vm"
+			type="com.rwawrzyniak.discofetch.presentation.recorddetail.AlbumDetailsViewModel" />
+	</data>
+
+<ScrollView
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	>
+
+	<androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+		xmlns:tools="http://schemas.android.com/tools"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content">
+
+		<ProgressBar
+			android:id="@+id/indeterminateBar"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent"
+			app:layout_constraintBottom_toBottomOf="parent"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center"
+			tools:visibility="gone"
+			app:showOnLoading="@{ vm.viewState }"
+			/>
+
+		<TextView
+			android:id="@+id/errorText"
+			android:layout_width="wrap_content"
+			android:layout_height="0dp"
+			app:showOnError="@{ vm.viewState }"
+			android:textSize="20sp"
+			tools:visibility="gone"
+			android:layout_gravity="center"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent" />
+
+		<androidx.constraintlayout.widget.Group
+			android:id="@+id/visibleGroup"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:visibility="visible"
+			app:hideOnLoading="@{ vm.viewState }"
+			app:constraint_referenced_ids="albumTitle,iv,artists,tracks" />
+
+		<TextView
+			android:id="@+id/albumTitle"
+			android:layout_width="wrap_content"
+			android:layout_height="0dp"
+			android:text="@{vm.viewState.toData().title}"
+			android:textSize="20sp"
+			tools:Text = "ALBUM NAME HEERe"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent" />
+
+		<ImageView
+			android:id="@+id/iv"
+			android:layout_width="180dp"
+			android:layout_height="180dp"
+			android:contentDescription="@{vm.viewState.toData().title}"
+			android:maxHeight="300dp"
+			android:scaleType="centerCrop"
+			app:imageUrl="@{vm.viewState.toData().cover_image_url}"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@id/albumTitle"
+			app:layout_constraintBottom_toTopOf="@id/artists"
+			tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+		<ListView
+			android:id="@+id/artists"
+			app:items="@{vm.viewState.toData().artists}"
+			android:layout_width="0dp"
+			android:layout_height="50dp"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@id/iv"
+			app:layout_constraintBottom_toTopOf="@+id/tracks"
+			/>
+
+		<TextView
+			android:id="@+id/tracks"
+			android:layout_width="wrap_content"
+			android:layout_height="0dp"
+			tools:text="Track 1, track2"
+			android:textSize="20sp"
+			android:text="@{vm.viewState.toData().tracks.toString()}"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@id/artists" />
+
+	</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
+</layout>
