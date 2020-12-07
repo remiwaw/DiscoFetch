@@ -1,6 +1,6 @@
 # Clean-Notes
 **Work in progress**
 
-![](DiscoFetcherSmall.gif)
+![](DiscoFetchSmall.gif)
 
 # Credits
