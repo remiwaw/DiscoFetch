@@ -96,6 +96,9 @@ class AlbumListFragment : BaseFragment(R.layout.fragment_album_list) {
 				binding.albumsRecyclerview.isVisible = loadState.source.refresh is LoadState.NotLoading
 				binding.inputLayout.isVisible = loadState.source.refresh is LoadState.NotLoading
 				binding.noHabits.isVisible = shouldShowNoData(loadState)
+				// TODO We lose focus on search input field when a loading is shown (by refresh)
+				// This fixes this problem, but also have side effect, when scrolling we keep requesting focus.
+				if(loadState.source.refresh is LoadState.NotLoading) binding.inputLayout.requestFocus()
 
 				binding.progressBar.isVisible = loadState.source.refresh is LoadState.Loading
 				binding.retryButton.isVisible = loadState.source.refresh is LoadState.Error
